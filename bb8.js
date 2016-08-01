@@ -32,7 +32,7 @@ bb8.connect(function() {
         if(bipolarMidpoint != null) {
             var tmp = bipolarMidpoint;
             var dir = (Math.floor(tmp.angle*(180/Math.PI))+360+90+zerop)%360;
-            var vol = Math.abs(tmp.pitch)*3;
+            var vol = Math.abs(tmp.pitch)*1.5;
 
             if(cali) {
                 bb8.roll(0, dir);
@@ -45,11 +45,11 @@ bb8.connect(function() {
             else {
                 if(tmp.pitch > 10) {
                     bb8.roll(vol, dir);
-                    bb8.color("00FF00");
+                    //bb8.color("00FF00");
                 }
                 else {
                     bb8.roll(0, dir);
-                    bb8.color("FF0000");
+                    //bb8.color("FF0000");
                 }
             }
         }
