@@ -7,7 +7,7 @@
     $ node ./node_modules/noble/examples/advertisement-discovery.js
     ```
 
-* Replace mine UUID with yours
+* Replace my UUID with yours
 * Run the following command:
 
     ```
