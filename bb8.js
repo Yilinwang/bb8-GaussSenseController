@@ -18,38 +18,24 @@ var bb8 = sphero("5e03f581ba624f7c963dbd7422045c62");
 bb8.connect(function() {
     //controlling function
     console.log('bb8 connected');
-    var cali = true;
-    var zerop = 0;
     bb8.color("000000");
-    bb8.setBackLed(255, null);
     bb8.setStabilization(1);
-
+    //refresh every 200 microsecond
     setInterval(function() {
         if(bipolarMidpoint != null) {
             var tmp = bipolarMidpoint;
             var dir = (Math.floor(tmp.angle*(180/Math.PI))+360+90+zerop)%360;
             //velocity max: *3
             var vol = Math.abs(tmp.pitch)*1.5;
-
-            if(cali) {
-                bb8.roll(0, dir);
-                if(tmp.pitch < -30) {
-                    zerop = dir;
-                    cali = false;
-                    bb8.setBackLed(0, null);
-                }
+            if(tmp.pitch > 10) {
+                bb8.roll(vol, dir);
+                //color green when move
+                //bb8.color("00FF00");
             }
             else {
-                if(tmp.pitch > 10) {
-                    bb8.roll(vol, dir);
-                    //color green when move
-                    //bb8.color("00FF00");
-                }
-                else {
-                    bb8.roll(0, dir);
-                    //color red when stop
-                    //bb8.color("FF0000");
-                }
+                bb8.roll(0, dir);
+                //color red when stop
+                //bb8.color("FF0000");
             }
         }
     }, 200);
