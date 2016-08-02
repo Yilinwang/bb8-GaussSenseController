@@ -17,6 +17,6 @@
     If successfully connected, you will see the following output:
 
     ```
-    $ webserver connected
-    $ bb8 connected
+    webserver connected
+    bb8 connected
     ```
